@@ -140,37 +140,19 @@ public class UserController {
 	@PostMapping("/getcriteria")
 	public String getCriteria(Model model, @RequestParam("criteria") String criteria,
 			@RequestParam("text") String response) {
-		if (criteria.equals("policyAmount") || criteria.equals("policyDuration")) {
-			int Criteria = Integer.parseInt(criteria);
-			if (criteria.equals("policyAmount")) {
-				List<PolicyData> data = policyservice.getdatabyAmount(Criteria);
-				model.addAttribute("object", data);
-				return "userhome";
-			} else {
-				List<PolicyData> data = policyservice.getdatabyDuration(Criteria);
-				model.addAttribute("object", data);
-
-				return "userhome";
-			}
-		} else {
 			if (criteria.equals("policyName")) {
-				List<PolicyData> data = policyservice.getdatabyName(criteria);
+				List<PolicyData> data = policyservice.getdatabyName(response);
 				model.addAttribute("object", data);
-				for (PolicyData po : data) {
-					System.out.println(po.getPolicyName());
-				}
 				return "userhome";
 			} else if (criteria.equals("policyType")) {
-				List<PolicyData> data = policyservice.getdatabyType(criteria);
+				List<PolicyData> data = policyservice.getdatabyType(response);
 				model.addAttribute("object", data);
 				return "userhome";
 			} else {
-				List<PolicyData> data = policyservice.getdatabyProvider(criteria);
+				List<PolicyData> data = policyservice.getdatabyProvider(response);
 				model.addAttribute("object", data);
 				return "userhome";
 			}
-		}
-
 	}
 
 	@GetMapping("/homereload")
