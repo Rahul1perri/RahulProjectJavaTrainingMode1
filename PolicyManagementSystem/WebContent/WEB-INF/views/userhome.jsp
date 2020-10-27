@@ -71,49 +71,18 @@ div {
 	<div align="left">
 		<form action="${pageContext.request.contextPath}/getcriteria"
 			method="post">
-			<table>
-				<tr>
-					<td>Select Criteria</td>
-				</tr>
-
-				<tr>
-					<td>PolicyName</td>
-					<td><input type="radio" name="criteria" value="policyName"></td>
-				</tr>
-
-				<tr>
-					<td>PolicyType</td>
-					<td><input type="radio" name="criteria" value="policyType"></td>
-				</tr>
-
-				<tr>
-					<td>PolicyProvider</td>
-					<td><input type="radio" name="criteria" value="policyProvider"></td>
-				</tr>
-
-				<tr>
-					<td>PolicyDuration</td>
-					<td><input type="radio" name="criteria" value="policyDuration"></td>
-				</tr>
-
-				<tr>
-					<td>PolicyAmount</td>
-					<td><input type="radio" name="criteria" value="policyAmount"></td>
-				</tr>
-
-				<tr>
-					<td>Enter Criteria</td>
-					<td><input type="text" name="text"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" name="Search"></td>
-				</tr>
-
-			</table>
+			<label for="criteria">Choose a Criteria:</label>
+<select id="criteria" name="criteria">
+  <option value="policyName">policyName</option>
+  <option value="policyType">policyType</option>
+  <option value="policyProvider">policyProvider</option>
+</select>
+<input type="text" name="text"  >
+<input type="submit" value="Search">
 		</form>
 
 		<h3>List of Policies Available</h3>
-		<c:forEach var="list" items="${data}">
+		<c:forEach var="list" items="${object}">
 			<table border='1'>
 				<tr>
 					<td>PolicyId</td>
